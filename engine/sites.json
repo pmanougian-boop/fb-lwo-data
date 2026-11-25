@@ -1,0 +1,23 @@
+{
+ "_comment": "Public config only. Launch sites only (Phil 2026-11-17): Cape Canaveral LC-39A (LL2 pad 87), Starbase Texas OLP-1 (LL2 pad 188), Vandenberg SLC-4E (LL2 pad 16) and Starbase LA (planned, assumed location). Phil's 'Starbase Louisiana' has no Launch Library 2 pad or location match (searched 2026-11-17); per Phil (2026-11-17, 6:18 PM CT) it is added as 'Starbase LA (planned, assumed location)', one assumed point at 29.56 N, 92.43 W (Gulf coast south of Pecan Island, Vermilion Parish, LA) with the same 5/10 nmi rings, no LL2 id, src 'assumed (Phil, 2026-11-17), planned site'. LL2 coordinates are (ll.thespacedevs.com /2.3.0/pads/, the same source as A1 / PR 265) fetched 2026-11-17; src names the LL2 pad id. LL2 is not an official range source: spot-check against range charts before 12.0 ships. src/fetched stay in this config and are never published. rules.precipConnect* are ours (proxy), not 4010B numbers. Optional models: add \"nbm\" and/or \"gefs\" to models (off by default). minFreeGB is 1 for the GitHub-hosted runner (14 GB SSD; the engine default of 10 would refuse to start). It is not part of cfgHash. The Mac bundle keeps the 10 GB default. A value below 10 needs --allow-low-min-free.",
+ "models": ["hrrr", "rrfs", "gfs", "ecmwf"],
+ "hours": 48,
+ "prevRuns": 3,
+ "exc": {"enabled": true},
+ "minFreeGB": 1,
+ "rules": {"_comment": "precipConnectDbz / precipConnectIn: ours (proxy). Thick-cloud 4.1.8 lead-in 'connected by precipitation' has no 4010B number; Site Weather proxy review 2026-11-17 kept 15 dBZ / 0.01 in/h. Composite reflectivity only (virga / elevated echo can over-connect).", "precipConnectDbz": 15.0, "precipConnectIn": 0.01},
+ "sites": [
+  {"id": "cape", "name": "Cape Canaveral LC-39A", "tz": "America/New_York", "pads": [
+   {"id": "lc39a", "lat": 28.60822681, "lon": -80.60428186, "src": "ll2 pad 87", "fetched": "2026-11-17"}
+  ]},
+  {"id": "starbase", "name": "Starbase, Texas", "tz": "America/Chicago", "pads": [
+   {"id": "olp", "lat": 25.9962, "lon": -97.154423, "src": "ll2 pad 188", "fetched": "2026-11-17"}
+  ]},
+  {"id": "vandenberg", "name": "Vandenberg SLC-4E", "tz": "America/Los_Angeles", "pads": [
+   {"id": "slc4e", "lat": 34.632, "lon": -120.611, "src": "ll2 pad 16", "fetched": "2026-11-17"}
+  ]},
+  {"id": "starbase-la", "name": "Starbase LA (planned, assumed location)", "tz": "America/Chicago", "pads": [
+   {"id": "assumed", "lat": 29.56, "lon": -92.43, "src": "assumed (Phil, 2026-11-17), planned site"}
+  ]}
+ ]
+}
