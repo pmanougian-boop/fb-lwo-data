@@ -1,0 +1,86 @@
+# Refresh the Flight Board LWO forecast from public NOAA and ECMWF open data.
+#
+# The schedule is listed here, and GitHub runs a schedule only from the default
+# branch. Until this file is on main, the cron does not run and nothing replaces
+# lwo-forecast.json. A pull request runs the same engine and uploads
+# staging/lwo-forecast.json as an artifact. It does not commit.
+name: LWO forecast
+
+on:
+  schedule:
+    # About four times a day, 5.5 h after the 00/06/12/18Z cycles. HRRR and RRFS
+    # synoptic runs that reach f048, and GFS, are usually published by then.
+    # ECMWF open data lags longer; the engine walks back up to 24 h and keeps
+    # the newest cycle that is actually published. Times are UTC.
+    - cron: "30 5,11,17,23 * * *"
+  workflow_dispatch:
+  pull_request:
+
+# A scheduled run must finish. A new pull-request push cancels the staging run
+# it replaced. Overlapping publishes share one queue and are not cancelled.
+concurrency:
+  group: lwo-forecast-${{ github.event_name == 'schedule' && 'publish' || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'schedule' }}
+
+permissions:
+  contents: read
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the engine
+        run: "python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r engine/requirements.lock"
+
+      - name: Check the publish gate
+        run: python -m unittest discover -s engine -t engine -p "test_validate.py"
+
+      - name: Run the engine into staging
+        env:
+          LWO_EVENT: ${{ github.event_name }}
+        run: bash scripts/run_lwo_job.sh
+
+      - name: Upload the staging forecast
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwo-staging
+          path: staging
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish:
+    needs: forecast
+    # pull_request never reaches this job. workflow_dispatch publishes only when
+    # it is started on main, which is the same branch the schedule uses.
+    if: >-
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') &&
+      github.ref == 'refs/heads/main' &&
+      needs.forecast.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download the validated forecast
+        uses: actions/download-artifact@v4
+        with:
+          name: lwo-staging
+          path: staging
+
+      - name: Commit the forecast when it is valid
+        run: bash scripts/publish_if_valid.sh

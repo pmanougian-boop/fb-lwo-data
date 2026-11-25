@@ -1,0 +1,29 @@
+# Hash-pinned runtime lock for pip install --require-hashes.
+# Generated 2026-11-17 from PyPI file lists. Wheels only, CPython 3.13:
+# macOS arm64 and linux x86_64. No sdists.
+# The engine's HTTP client is the Python standard library.
+# certifi adds Mozilla's CA bundle on top of the system trust store
+# (data.ecmwf.int chains to HARICA TLS RSA Root CA 2021).
+numpy==2.5.5 \
+    --hash=sha256:7e71ac4284c700afa654e2d15b1b174166710dca932f24045e5dc92001b5bda0 \
+    --hash=sha256:e0cf407a83118faf0463ade48a4533982f1737c7c58aac29e08855f7d9ad2977 \
+    --hash=sha256:824025655df929268bfe6b47ed91a00d14209a6f760847cf150be446829e1ce4
+eccodes==2.50.1 \
+    --hash=sha256:2fd6c5f86183ca156778fd9a97425a5e6ff0449d0a11edbe70a96417c3a0cc35
+eccodeslib==2.50.0.34 \
+    --hash=sha256:ad7554c661c5fbfd7c42267afb4d6c21017df1263f9ba7c8e3128b14f4c3bd6a \
+    --hash=sha256:1e79efc7243f7d4a299f55d77e40db5e79131e714116296e0f847ba890e91484
+eckitlib==2.5.0.34 \
+    --hash=sha256:9bbef0bcd7f04de4e9cbd74ff76c25fceaa3a6ac1e8a8e03fdf463d349212be2 \
+    --hash=sha256:e295faabc0c050cf78847e92f8e2f468428eea58c8ba843797a09c532b6744a2
+findlibs==0.1.5 \
+    --hash=sha256:48088b276ea3699422fb3921934db05f9eddfb3cd3fb689c39f5127a97350661
+attrs==26.1.0 \
+    --hash=sha256:c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309
+cffi==2.1.1 \
+    --hash=sha256:19ee6127ee34de7d83ce3d371ebc5ed91addbdcc39f9ab15ce4eb35a4e534971 \
+    --hash=sha256:a931079504ecc49efed7744c476a5c343a92fabf66dec2db95edb1b2fdc770e2
+pycparser==3.12 \
+    --hash=sha256:a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e
+certifi==2026.10.23 \
+    --hash=sha256:e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1
