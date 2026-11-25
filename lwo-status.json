@@ -1,0 +1,68 @@
+{
+  "schema": "fb-lwo-status",
+  "v": 1,
+  "ok": true,
+  "published": true,
+  "event": "workflow_dispatch",
+  "generatedAt": "2026-11-25T18:21:31Z",
+  "t0": "2026-11-25T18:00:00Z",
+  "startedAt": "2026-11-25T18:21:31Z",
+  "finishedAt": "2026-11-25T18:29:12Z",
+  "durationSec": 461,
+  "engineExit": 0,
+  "bytesDownloaded": 2462323534,
+  "requests": 2895,
+  "plannedBytes": 2462323534,
+  "bytesWritten": 9436,
+  "models": [
+    {
+      "id": "hrrr",
+      "run": "2026-11-25T12:00:00Z",
+      "status": "ok",
+      "maxH": 48
+    },
+    {
+      "id": "rrfs",
+      "run": "2026-11-25T12:00:00Z",
+      "status": "ok",
+      "maxH": 54
+    },
+    {
+      "id": "gfs",
+      "run": "2026-11-25T12:00:00Z",
+      "status": "ok",
+      "maxH": 54
+    },
+    {
+      "id": "ecmwf",
+      "run": "2026-11-25T06:00:00Z",
+      "status": "ok",
+      "maxH": 60
+    }
+  ],
+  "ens": {
+    "src": "ecmwf-ens",
+    "run": "2026-11-25T06:00:00Z",
+    "members": 50,
+    "blocksPresent": 8
+  },
+  "hours": {
+    "count": 48,
+    "from": 0,
+    "to": 47
+  },
+  "sites": [
+    "cape",
+    "starbase",
+    "vandenberg",
+    "starbase-la"
+  ],
+  "validationErrors": [],
+  "engine": {
+    "repo": "pmanougian-boop/flight-board",
+    "commit": "97c33dcb4c4c4729a8b725352c173fab85c542e4",
+    "path": "tools/lwo-engine/lwo_w3.py",
+    "blob": "c394694340b970bd41c57abe7cfe0b50c4a87deb",
+    "version": "0.1.0"
+  }
+}
