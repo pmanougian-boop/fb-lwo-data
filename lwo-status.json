@@ -4,45 +4,45 @@
   "ok": true,
   "published": true,
   "event": "workflow_dispatch",
-  "generatedAt": "2026-11-25T18:21:31Z",
-  "t0": "2026-11-25T18:00:00Z",
-  "startedAt": "2026-11-25T18:21:31Z",
-  "finishedAt": "2026-11-25T18:29:12Z",
-  "durationSec": 461,
+  "generatedAt": "2026-11-27T00:53:15Z",
+  "t0": "2026-11-27T00:00:00Z",
+  "startedAt": "2026-11-27T00:53:15Z",
+  "finishedAt": "2026-11-27T01:00:44Z",
+  "durationSec": 449,
   "engineExit": 0,
-  "bytesDownloaded": 2462323534,
-  "requests": 2895,
-  "plannedBytes": 2462323534,
-  "bytesWritten": 9436,
+  "bytesDownloaded": 2486102574,
+  "requests": 2907,
+  "plannedBytes": 2486102574,
+  "bytesWritten": 10602,
   "models": [
     {
       "id": "hrrr",
-      "run": "2026-11-25T12:00:00Z",
+      "run": "2026-11-26T18:00:00Z",
       "status": "ok",
       "maxH": 48
     },
     {
       "id": "rrfs",
-      "run": "2026-11-25T12:00:00Z",
+      "run": "2026-11-26T18:00:00Z",
       "status": "ok",
       "maxH": 54
     },
     {
       "id": "gfs",
-      "run": "2026-11-25T12:00:00Z",
+      "run": "2026-11-26T18:00:00Z",
       "status": "ok",
       "maxH": 54
     },
     {
       "id": "ecmwf",
-      "run": "2026-11-25T06:00:00Z",
+      "run": "2026-11-26T18:00:00Z",
       "status": "ok",
-      "maxH": 60
+      "maxH": 54
     }
   ],
   "ens": {
     "src": "ecmwf-ens",
-    "run": "2026-11-25T06:00:00Z",
+    "run": "2026-11-26T12:00:00Z",
     "members": 50,
     "blocksPresent": 8
   },
