@@ -10,15 +10,15 @@ Public, machine-generated launch-weather model summaries for Flight Board (4 sit
 
 `.github/workflows/lwo-forecast.yml` runs the engine in this repository. The engine is the W3 script from Flight Board, copied in `engine/` (source commit and blob are in `engine/SOURCE.md`). It downloads GRIB into memory from public NOAA S3 buckets and `data.ecmwf.int`, then writes one JSON file. No API key and no repository secret.
 
-The workflow runs at 05:30, 11:30, 17:30 and 23:30 UTC. That is about five and a half hours after the 00/06/12/18Z cycles, when the HRRR and RRFS runs that reach f048, and GFS, are usually published. ECMWF open data is often later; the engine keeps the newest cycle that is actually on the server, looking back at most 24 hours. GitHub may start a scheduled run later than the cron time. The engine tolerates that.
+The workflow runs at 05:17, 11:17, 17:17 and 23:17 UTC. That is a little over five hours after the 00/06/12/18Z cycles, when the HRRR and RRFS runs that reach f048, and GFS, are usually published. ECMWF open data is often later; the engine keeps the newest cycle that is actually on the server, looking back at most 24 hours. The minute is 17 rather than 0 or 30 because GitHub delays the schedule event when Actions is busy, and the start of the hour is a busy time. A run that starts late, or is dropped, is covered by the next one. The engine tolerates that.
 
-A run publishes only when every voting model (HRRR, RRFS, GFS, ECMWF) is present with status `ok`, hours 0 through 47 are present, values sit in a physical range, and ECMWF ENS is present on all four sites. Otherwise the job fails and the previous `lwo-forecast.json` stays. NBM and GEFS stay off, matching the file Flight Board reads today.
+A run publishes only when the engine output passes the gate: every voting model (HRRR, RRFS, GFS, ECMWF) is present with status `ok`, hours 0 through 47 are present, values sit in a physical range, and ECMWF ENS is present on all four sites. Otherwise the forecast job fails and the previous `lwo-forecast.json` stays. The unit tests use a fixture and an injected clock. They run in their own job and do not gate the refresh, so a test failure cannot skip the engine. A failed refresh writes `ok: false` and the error on the run summary, and opens or updates one issue titled "LWO forecast refresh failed". NBM and GEFS stay off, matching the file Flight Board reads today.
 
 GitHub runs a `schedule` only from the default branch. The cron in this workflow does nothing until the file is on `main`. A pull request runs the engine and uploads `staging/lwo-forecast.json` as an artifact. It does not commit, and it does not change the Pages file.
 
 ### Turn the schedule on
 
-Merge the pull request into `main`. The next 05:30, 11:30, 17:30 or 23:30 UTC run publishes. To publish once without waiting, open Actions, choose **LWO forecast**, run the workflow on `main`.
+Merge the pull request into `main`. The next 05:17, 11:17, 17:17 or 23:17 UTC run publishes. To publish once without waiting, open Actions, choose **LWO forecast**, run the workflow on `main`.
 
 ### Turn the schedule off
 
