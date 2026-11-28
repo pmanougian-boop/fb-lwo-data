@@ -4,45 +4,45 @@
   "ok": true,
   "published": true,
   "event": "schedule",
-  "generatedAt": "2026-11-27T15:08:22Z",
-  "t0": "2026-11-27T15:00:00Z",
-  "startedAt": "2026-11-27T15:08:22Z",
-  "finishedAt": "2026-11-27T15:15:48Z",
-  "durationSec": 446,
+  "generatedAt": "2026-11-28T00:33:29Z",
+  "t0": "2026-11-28T00:00:00Z",
+  "startedAt": "2026-11-28T00:33:29Z",
+  "finishedAt": "2026-11-28T00:41:23Z",
+  "durationSec": 474,
   "engineExit": 0,
-  "bytesDownloaded": 2472501976,
-  "requests": 2897,
-  "plannedBytes": 2472501976,
-  "bytesWritten": 9375,
+  "bytesDownloaded": 2463623219,
+  "requests": 2900,
+  "plannedBytes": 2463623219,
+  "bytesWritten": 9431,
   "models": [
     {
       "id": "hrrr",
-      "run": "2026-11-27T12:00:00Z",
+      "run": "2026-11-27T18:00:00Z",
       "status": "ok",
       "maxH": 48
     },
     {
       "id": "rrfs",
-      "run": "2026-11-27T12:00:00Z",
+      "run": "2026-11-27T18:00:00Z",
       "status": "ok",
-      "maxH": 51
+      "maxH": 54
     },
     {
       "id": "gfs",
-      "run": "2026-11-27T06:00:00Z",
+      "run": "2026-11-27T18:00:00Z",
       "status": "ok",
-      "maxH": 57
+      "maxH": 54
     },
     {
       "id": "ecmwf",
-      "run": "2026-11-27T06:00:00Z",
+      "run": "2026-11-27T18:00:00Z",
       "status": "ok",
-      "maxH": 57
+      "maxH": 54
     }
   ],
   "ens": {
     "src": "ecmwf-ens",
-    "run": "2026-11-27T06:00:00Z",
+    "run": "2026-11-27T12:00:00Z",
     "members": 50,
     "blocksPresent": 8
   },
